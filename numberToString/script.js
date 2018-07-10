@@ -20,6 +20,10 @@ function numberToString( number ) {
         })
         .join(' ')
     
+    if ( res.charAt(res.length - 1) == "," ) {
+        res = res.slice(0, res.length - 1)
+    }
+    
     return res
 }
 
@@ -36,17 +40,29 @@ function parser( digit, index, string ) {
 
         case 2: return digitToString(digit) + (digit != 0 ? " hundred" : "");
 
-        case 3:  case 4 : case 5 : suffix = "thousand";    break;
-        case 6:  case 7 : case 8 : suffix = "million";     break;
-        case 9:  case 10: case 11: suffix = "billion";     break;
-        case 12: case 13: case 14: suffix = "trillion";    break;
-        case 15: case 16: case 17: suffix = "quadrillion"; break;
-        case 18: case 19: case 20: suffix = "pentillion";  break;
-        case 21: case 22: case 23: suffix = "sextillion";  break;
-        case 24: case 25: case 26: suffix = "septillion";  break;
-        case 27: case 28: case 29: suffix = "octillion";   break;
-        case 30: case 31: case 32: suffix = "nonillion";   break;
-        case 33: case 34: case 35: suffix = "decillion";   break;
+        case 3:  case 4 : case 5 : suffix = "thousand,";          break;
+        case 6:  case 7 : case 8 : suffix = "million,";           break;
+        case 9:  case 10: case 11: suffix = "billion,";           break;
+        case 12: case 13: case 14: suffix = "trillion,";          break;
+        case 15: case 16: case 17: suffix = "quadrillion,";       break;
+        case 18: case 19: case 20: suffix = "pentillion,";        break;
+        case 21: case 22: case 23: suffix = "sextillion,";        break;
+        case 24: case 25: case 26: suffix = "septillion,";        break;
+        case 27: case 28: case 29: suffix = "octillion,";         break;
+        case 30: case 31: case 32: suffix = "nonillion,";         break;
+        case 33: case 34: case 35: suffix = "decillion,";         break;
+        case 36: case 37: case 38: suffix = "undecillion,";       break;
+        case 39: case 40: case 41: suffix = "duodecillion,";      break;
+        case 42: case 43: case 44: suffix = "tredecillion,";      break;
+        case 45: case 46: case 47: suffix = "quattuordecillion,"; break;
+        case 48: case 49: case 50: suffix = "quindecillion,";     break;
+        case 51: case 52: case 53: suffix = "sexdecillion,";      break;
+        case 54: case 55: case 56: suffix = "septendecillion,";   break;
+        case 57: case 58: case 59: suffix = "octodecillion,";     break;
+        case 60: case 61: case 62: suffix = "novemdecillion,";    break;
+        case 63: case 64: case 65: suffix = "vigintillion,";      break;
+
+        default: suffix = numberToString( Math.floor(remaining_length/3)-1 ).replace(/\s/g,"")+"cillion"
     }
 
     switch ( remaining_length % 3 ) {
