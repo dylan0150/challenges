@@ -61,8 +61,11 @@ function parser( digit, index, string ) {
         case 57: case 58: case 59: suffix = "octodecillion,";     break;
         case 60: case 61: case 62: suffix = "novemdecillion,";    break;
         case 63: case 64: case 65: suffix = "vigintillion,";      break;
+        case 100: case 101: case 102: suffix = "googol"; break;
+        case 303: case 304: case 305: suffix = "centillion"; break;
 
-        default: suffix = numberToString( Math.floor(remaining_length/3)-1 ).replace(/\s/g,"")+"cillion"
+        default:
+            suffix = numberToString( Math.floor(remaining_length/3)-1 ).replace(/\s/g,"")+"decillion"
     }
 
     switch ( remaining_length % 3 ) {
