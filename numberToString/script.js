@@ -43,13 +43,15 @@ function parser( digit, index, string ) {
 
     switch ( remaining_length % 3 ) {
         case 0:
-            return index == 0
-                ? digitToString( digit ) + " " + suffix
+            var n = digitToString( digit )
+            return index == 0 && n != ""
+                ? n + " " + suffix
                 : ""
 
         case 1:
-            return index == 0
-                ? getTens( string.slice( index, index+2 ) ) + " " + suffix
+            var n = getTens( string.slice( index, index+2 ) )
+            return index == 0 && n != ""
+                ? n + " " + suffix
                 : ""
                 
         case 2: 
