@@ -1,10 +1,16 @@
 function numberToString( number ) {
 
     let string = String(number)
+    let res = ""
 
-    if ( string == "0" ) { return "zero" }
+    if ( string.trim().charAt(0) == "-" ) {
+        string = string.replace("-","")
+        res += "negative "
+    }
 
-    return string
+    if ( string == "0" ) { return res+"zero" }
+
+    res += string
         .split('')
         .map(function(e,i) {
             return parser(e, i, string ).trim()
@@ -13,6 +19,8 @@ function numberToString( number ) {
             return e !== "";
         })
         .join(' ')
+    
+    return res
 }
 
 function parser( digit, index, string ) {
