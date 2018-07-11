@@ -40,7 +40,7 @@ function parser( digit, index, string ) {
 
         case 2: return digitToString(digit) + (digit != 0 ? " hundred" : "");
 
-        case 3:  case 4 : case 5 : suffix = "thousand,";          break;
+        case 3:  case 4 : case 5 : suffix = "thousand";           break;
         case 6:  case 7 : case 8 : suffix = "million,";           break;
         case 9:  case 10: case 11: suffix = "billion,";           break;
         case 12: case 13: case 14: suffix = "trillion,";          break;
@@ -97,6 +97,9 @@ function getTens( tens ) {
 }
 
 function getTensPrefix( number ) {
+    if ( number.charAt(0) == "0" ) {
+        return ""
+    }
     switch ( number ) {
         case "10": return "ten";
         case "11": return "eleven";
@@ -124,7 +127,7 @@ function getTensPrefix( number ) {
 }
 
 function getTensSuffix( number ) {
-    if ( Number(number) < 20 ) {
+    if ( Number(number) > 9 && (number) < 20 ) {
         return Number(number) > 12 ? "teen" : ""
     }
     return digitToString( number.charAt(1) )
