@@ -12,7 +12,8 @@ class Arc {
     }
 
     show() {
-        ctx.strokeStyle = "white";
+        ctx.strokeStyle = "lightblue";
+        ctx.lineWidth = 0.1
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.radius, this.start, this.end, false)
         ctx.stroke()
@@ -28,11 +29,14 @@ function init() {
     numbers  = [true]
     counter  = 1
     index    = 0
-    biggest  = 1
+    biggest  = 10
     y        = c.height/2
 
-    loop()
+    setInterval(loop, 100)
+    draw()
 }
+
+
 
 function loop() {
 
@@ -52,9 +56,11 @@ function loop() {
     arcs.push( arc )
 
     if ( new_index > biggest ) {
-        biggest = new_index
+        biggest = new_index + 5
     }
+}
 
+function draw() {
     let factor = c.width/biggest
 
     ctx.save()
@@ -70,7 +76,7 @@ function loop() {
     }
     ctx.restore()
 
-    window.requestAnimationFrame(loop)
+    window.requestAnimationFrame(draw)
 }
 
 function getNextNumber() {
