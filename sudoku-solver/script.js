@@ -88,9 +88,10 @@
                         if ( vals.length === 1 ) {
                             solved = true
                             new Guess(i, j, vals)
-                        } else continue;
-                    } else continue;
+                        }
+                    }
                 }
+                if ( cell === undefined ) { continue; }
                 ctx.font = "40px Arial"
                 ctx.strokeStyle = "white"
                 ctx.fillStyle   = "blue"
@@ -101,7 +102,9 @@
         if ( !solved && try_to_solve ) {
             var cell = getUnsolvedCell()
             if ( cell === null ) {
-                throw "No cells remaining";
+                try_to_solve = false;
+                console.log("SOLVED")
+                return;
             }
             var vals = getPossibleValues(cell[0], cell[1])
             if ( vals.length > 0 ) {
@@ -109,7 +112,7 @@
                 new Guess( cell[0], cell[1], vals)
             }
         }
-        if ( !solved ) {
+        if ( !solved && try_to_solve ) {
             backtrack()
         }
     }
