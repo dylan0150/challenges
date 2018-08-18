@@ -26,7 +26,7 @@
         canvas.height = 600
         ctx           = canvas.getContext("2d")
 
-        generateRandomGrid(15)
+        generateRandomGrid(17)
 
         draw()
 
@@ -83,7 +83,7 @@
             for (var j = 0; j < row.length; j++) {
                 var cell = row[j];
                 if ( cell === undefined ) {
-                    if ( try_to_solve && !solved ) {
+                    if ( try_to_solve ) {
                         var vals = getPossibleValues(i, j)
                         if ( vals.length === 1 ) {
                             solved = true
@@ -209,7 +209,7 @@
     }
     Guess.prototype.tryAnswer = function() {
         this.value = this.vals.shift()
-        console.log("GUESS: cell ["+(this.i+1)+":"+(this.j+1)+"] = "+this.value)
+        //console.log("GUESS: cell ["+(this.i+1)+":"+(this.j+1)+"] = "+this.value)
         grid[this.i][this.j] = this.value
     }
     Guess.prototype.clear = function() {
