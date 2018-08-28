@@ -1,0 +1,16 @@
+{
+  "name": "perfect-numbers",
+  "version": "1.0.0",
+  "description": "A number is considered perfect if its digits sum up to exactly 10.",
+  "main": "index.js",
+  "dependencies": {
+    "@types/node": "^10.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
