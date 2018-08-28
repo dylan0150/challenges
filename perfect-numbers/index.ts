@@ -64,10 +64,17 @@ function getNextPerfectInt(perfect_int: number) {
         mag *= 10
     }
     let res = Number(`${new_prefix}${last_digit}`)
-    if ( isNaN(res) ) {
+
+    if ( !isPerfectInt(res) ) {
+        console.log(`${new_prefix}${last_digit}`, res)
+        throw res
+    }
+
+    if ( res === perfect_int ) {
         console.error(new_prefix)
         console.error(last_digit)
         throw res;
     }
+
     return res
 }
