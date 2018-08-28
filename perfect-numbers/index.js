@@ -44,9 +44,17 @@ function getNextPerfectInt(perfect_int) {
     if (String(new_prefix).length > String(prefix_number).length) {
         last_digit = 9;
     }
-    if (last_digit < 0) {
-        new_prefix = Math.ceil(new_prefix / 10) * 10;
+    var mag = 10;
+    while (last_digit < 0) {
+        new_prefix = Math.ceil(new_prefix / mag) * mag;
         last_digit = 10 - getStringSum(new_prefix);
+        mag *= 10;
     }
-    return Number("" + new_prefix + last_digit);
+    var res = Number("" + new_prefix + last_digit);
+    if (isNaN(res)) {
+        console.error(new_prefix);
+        console.error(last_digit);
+        throw res;
+    }
+    return res;
 }
