@@ -1,0 +1,15 @@
+{
+  "name": "skiing-in-singapore",
+  "version": "1.0.0",
+  "description": "Skiing in Singapore",
+  "main": "script.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tape": "^4.9.1"
+  }
+}
