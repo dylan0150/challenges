@@ -13,7 +13,6 @@ const convertToSkiiMap = filePath => new Promise((resolve, reject) => {
     })
 })
 
-
 const findLongestRoute = map => {
     const [w, h] = map.shift()
 
