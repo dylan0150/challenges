@@ -2,12 +2,11 @@ const fs = require('fs')
 
 const convertToSkiiMap = filePath => {
     const mapFile = fs.readFileSync(`${__dirname}/${filePath}`, 'UTF-8')
-    const skiiMap = mapFile
+    
+    return mapFile
         .replace(/\r/g,'')
         .split('\n')
         .map(line => line.split(' ').map(Number))
-
-    return skiiMap
 }
 
 const findLongestRoute = map => {
