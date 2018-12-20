@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const convertToSkiiMap = (filePath) => {
+const convertToSkiiMap = filePath => {
     const mapFile = fs.readFileSync(`${__dirname}/${filePath}`, 'UTF-8')
     const skiiMap = mapFile
         .replace(/\r/g,'')
@@ -10,7 +10,7 @@ const convertToSkiiMap = (filePath) => {
     return skiiMap
 }
 
-const findLongestRoute = (map) => {
+const findLongestRoute = map => {
     const [w, h] = map.shift()
 
     let longest = []
