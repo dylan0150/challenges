@@ -12,14 +12,13 @@ const convertToSkiiMap = (filePath) => {
 
 const findLongestRoute = (map) => {
     const [w, h] = map.shift()
-    const traversed_nodes = {}
 
     let longest = []
     let greatest = 0
     for (let x = 0; x < w; x++) {
         for (let y = 0; y < h; y++) {
             const n = map[x][y]
-            const { path, diff } = findLongestDsc(n, x, y, w, h, map, traversed_nodes)
+            const { path, diff } = findLongestDsc(n, x, y, w, h, map)
             if (path.length > longest.length) {
                 longest = path
                 greatest = diff
@@ -36,7 +35,7 @@ const findLongestRoute = (map) => {
     return longest
 }
 
-const findLongestDsc = (n, x, y, w, h, map, traversed_nodes, current_path=[], current_diff=0, ) => {
+const findLongestDsc = (n, x, y, w, h, map, current_path=[], current_diff=0, ) => {
     if (typeof n === 'object') return n
 
     const adjacentNodes = getAdjacentNodes(x, y, w, h, map)
@@ -45,7 +44,7 @@ const findLongestDsc = (n, x, y, w, h, map, traversed_nodes, current_path=[], cu
     let greatest = 0
     for (const [x2, y2, n2] of adjacentNodes) {
         const { path, diff } = n2 < n
-            ? findLongestDsc(n2, x2, y2, w, h, map, traversed_nodes, [...current_path, n], current_diff + n - n2)
+            ? findLongestDsc(n2, x2, y2, w, h, map, [...current_path, n], current_diff + n - n2)
             : { path: [...current_path, n], diff: current_diff }
         
         if (path.length > longest.length) {
