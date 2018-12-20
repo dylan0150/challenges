@@ -19,8 +19,8 @@ tape('findLongestRoute :: Finds longest route 9-5-3-2-1 for testMap1', t => {
     t.end()
 })
 
-tape('findLongestRoute :: Finds longest route for challenge map', t => {
-    const map = convertToSkiiMap('map.txt')
+tape('findLongestRoute :: Finds longest route for challenge map', async t => {
+    const map = await convertToSkiiMap('map.txt')
     const route = findLongestRoute(map)
     console.log(route)
     t.ok(route)

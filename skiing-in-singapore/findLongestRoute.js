@@ -1,13 +1,18 @@
 const fs = require('fs')
 
-const convertToSkiiMap = filePath => {
-    const mapFile = fs.readFileSync(`${__dirname}/${filePath}`, 'UTF-8')
-    
-    return mapFile
-        .replace(/\r/g,'')
-        .split('\n')
-        .map(line => line.split(' ').map(Number))
-}
+const convertToSkiiMap = filePath => new Promise((resolve, reject) => {
+    fs.readFile(`${__dirname}/${filePath}`, 'UTF-8', (err, data) => {
+        if (err) return reject(err)
+
+        const skiiMap = data
+            .replace(/\r/g,'')
+            .split('\n')
+            .map(line => line.split(' ').map(Number))
+
+        return resolve(skiiMap)
+    })
+})
+
 
 const findLongestRoute = map => {
     const [w, h] = map.shift()
