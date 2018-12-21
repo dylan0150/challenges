@@ -1,0 +1,15 @@
+{
+  "name": "1000000th-customer-prize",
+  "version": "1.0.0",
+  "description": "Imagine a little while from now RedMart is closing in fast on delivering its 1 millionth order. The marketing team decides to give the customer who makes that order a prize as a gesture of appreciation. The prize is a fun one: the lucky customer gets a RedMart delivery tote and 1 hour in the warehouse. Use the hour to fill up the tote with any products you desire and take them home for free.",
+  "main": "binPacker.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tape": "^4.9.1"
+  }
+}
